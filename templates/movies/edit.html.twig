@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<div class="w-4/5 m-auto pt-40">
+	<h1 class=" sm:text-base text-6xl text-center pb-12">
+		Edit Movie
+	</h1>
+</div>
+{{ form_start(form) }}
+
+{{ form_widget(form) }}
+
+
+<button type="submit" class="uppercase mt-15 bg-blue-500 text-lg font-extrabold py-4 px-8 rounded-3xl">
+Update Post
+</button>
+
+{{ form_end(form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,1 @@
+console.log('method 1 is printed');

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="w-4/5 p-8 m-auto pt-40">
+    <h1 class="sm:text-base text-3xl text-center pb-12">
+      Create Movie
+    </h1>
+
+    {{ form_start(form) }}
+
+    {# Global form errors (e.g. CSRF) #}
+      <div class="text-red-600 font-semibold mb-4">
+        {{ form_errors(form) }}
+      </div>
+
+    <div class="mb-6">
+      {{ form_widget(form.title) }}
+        <p class="text-red-500 text-sm mt-2">{{ form_errors(form.title) }}</p>
+      
+    </div>
+
+    <div class="mb-6">
+      {{ form_widget(form.releaseYear) }}
+        <p class="text-red-500 text-sm mt-2">{{ form_errors(form.releaseYear) }}</p>
+    
+    <div class="mb-6">
+      {{ form_widget(form.description) }}
+      
+        <p class="text-red-500 text-sm mt-2">{{ form_errors(form.description) }}</p>
+      
+      
+    </div>
+
+    <div class="mb-6">
+      {{ form_widget(form.MovieImg) }}
+      <p class="text-red-500 text-sm mt-2">{{ form_errors(form.MovieImg) }}</p>
+   
+      
+    </div>
+
+    <button type="submit" class="uppercase mt-8 bg-blue-400 text-lg font-extrabold py-4 px-8 rounded-3xl hover:bg-blue-500 transition">
+      Submit Post
+    </button>
+
+    {{ form_end(form) }}
+  </div>
+{% endblock %}

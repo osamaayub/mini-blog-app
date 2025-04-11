@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="w-4/5 m-auto text-center">
+		<div class="py-12 border-b border-gray-200">
+			<h1 class="text-6xl pt-12 pb-8">
+				Movies Review ({{ movies|length }})
+			</h1>
+
+			<span class="font-light text-gray-500 italic">
+				Created by Osama Ayub
+			</span>
+		</div>
+		<div class="mx-auto w-4/5 my-8">
+            <a 
+                href="/movies/create" 
+                class="uppercase border border-gray-500 text-lg py-4 px-4 rounded-2xl transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+                Create New movie
+            </a>
+        </div>
+
+		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-11/12 mx-auto my-8 py-8">
+			{% for movie in movies %}
+				<div
+					class="bg-white  shadow-md mt-20 rounded-lg overflow-hidden flex flex-col justify-between h-86">
+
+					<!-- Image Wrapper (Fixed Height, Responsive, Object Cover) -->
+					<div class="w-full h-60 sm:h-64 md:h-72 lg:h-80 overflow-hidden">
+						<img src="{{ movie.movieImg }}" alt="movie image" class="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"/>
+					</div>
+
+					<!-- Content -->
+					<div class="p-4 flex mb-8 flex-col justify-between flex-grow">
+						<h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 truncate text-center">
+							{{ movie.title }}
+						</h2>
+						<p class="text-gray-600 text-sm md:text-base mb-4 line-clamp-3 text-center">
+							{{ movie.description }}
+						</p>
+						<p class="text-gray-400 text-xs text-center mb-2">
+							By
+							<span class="italic text-gray-700">Code With Osama | 08.04.25</span>
+						</p>
+
+						<!-- Button -->
+						<a href="/movies/{{ movie.id }}" class="mt-auto  mx-auto text-center w-fit uppercase text-sm border border-gray-500 text-gray-700 py-2 px-4 rounded hover:bg-black hover:text-white transition-all">
+							Keep Reading
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endblock %}
