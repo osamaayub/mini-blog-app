@@ -71,7 +71,7 @@ class moviesController extends AbstractController
           return new Response($e->getMessage());
         }
         //set the new path of the movie 
-        $newMovie->setMovieImg('/uploads/' . $newFileName);
+        $newMovie->setMovieImg("/uploads/" . $newFileName);
       }
 
       //add new data
@@ -106,7 +106,7 @@ class moviesController extends AbstractController
     if ($form->isSubmitted() && $form->isValid()) {
       //check if the image path is  valid
       if ($movieImagePath) {
-        //check if the image path 
+        //check if the image path  is null or not
         if ($existingMovie->getMovieImg() !== null) {
           //check if the file exists or not
           if (

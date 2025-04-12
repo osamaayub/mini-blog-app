@@ -12,6 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
+
 
 
 
@@ -23,10 +25,18 @@ class MovieFormType extends AbstractType
   {
     $builder
       ->add('title', TextType::class, [
-        'constraints'=>new NotBlank([
-          'message'=>'title is not empty!'
-        ]),
-        'required'=>false,
+        'constraints' => [
+          new NotBlank([
+            'message' => 'title is not empty!',
+          ]),
+          new Length([
+            'min' => 10,
+            'max' => 255,
+            'minMessage' => 'title cannot be less than 10 characters',
+            'maxMessage' => 'title cannot be more than 255 characters'
+          ])
+        ],
+        'required' => false,
         'attr' => array(
           'class' => 'bg-transparent border border-b-2  w-full h-20 text-xl rounded  outline-none',
           'placeholder' => 'Enter the Movie Title',
@@ -37,12 +47,12 @@ class MovieFormType extends AbstractType
 
       ])
       ->add('releaseYear', IntegerType::class, [
-        'constraints'=>[
+        'constraints' => [
           new NotBlank([
-            'message'=>'release year cannot be empty!'
+            'message' => 'release year cannot be empty!'
           ])
         ],
-        'required'=>false,
+        'required' => false,
         'attr' => array(
           'class' => 'bg-transparent border border-b-2 w-full rounded mt-4 text-xl outline-none ',
           'placeholder' => 'Enter the Release Year',
@@ -51,31 +61,31 @@ class MovieFormType extends AbstractType
         'label' => false
       ])
       ->add('description', TextareaType::class, [
-        'constraints'=>[
-        new NotBlank([
-          'message'=>'Description Cannot be empty!'
-        ])
+        'constraints' => [
+          new NotBlank([
+            'message' => 'Description Cannot be empty!'
+          ])
         ],
-        'required'=>false,
+        'required' => false,
         'attr' => array(
           'class' => 'bg-transparent outline-none rounded text-xl border border-b-2 h-30 w-full mt-4',
           'placeholder' => 'Enter the Movie Description'
         ),
         'label' => false
       ])
-      ->add('MovieImg',FileType::class,[
-        'constraints'=>[
+      ->add('MovieImg', FileType::class, [
+        'constraints' => [
           new NotBlank([
-            'message'=>'Movie Img cannot be empty'
+            'message' => 'Movie Img cannot be empty'
           ])
         ],
-        
-         'required'=>false,
-         'mapped'=>false,
-         'attr'=>array(
-          'class'=>'w-full h-full object-cover'
-         ),
-         'label'=>false
+
+        'required' => false,
+        'mapped' => false,
+        'attr' => array(
+          'class' => 'w-full h-full object-cover'
+        ),
+        'label' => false
       ])
       // ->add('actors', EntityType::class, [
       //     'class' => Actor::class,
@@ -83,7 +93,7 @@ class MovieFormType extends AbstractType
       //     'multiple' => true,
       // ])
     ;
-    
+
   }
 
   public function configureOptions(OptionsResolver $resolver): void
