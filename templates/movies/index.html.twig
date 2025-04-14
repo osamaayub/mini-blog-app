@@ -12,15 +12,12 @@
 			<span class="font-light text-gray-500 italic">
 				Created by Osama Ayub
 			</span>
+			<div class="mx-auto w-4/5 my-8">
+				<a href="/movies/create" class="uppercase border border-gray-500 text-lg py-4 px-4 rounded-2xl transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+					Create New movie
+				</a>
+			</div>
 		</div>
-		<div class="mx-auto w-4/5 my-8">
-            <a 
-                href="/movies/create" 
-                class="uppercase border border-gray-500 text-lg py-4 px-4 rounded-2xl transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
-                Create New movie
-            </a>
-        </div>
-
 		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-11/12 mx-auto my-8 py-8">
 			{% for movie in movies %}
 				<div
